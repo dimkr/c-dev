@@ -11,7 +11,7 @@ RUN wget -q http://mirrors.kernel.org/ubuntu/pool/main/m/mpfr4/libmpfr4_3.1.4-1_
 RUN wget -q http://mirrors.kernel.org/ubuntu/pool/main/m/mpfr4/libmpfr4_3.1.4-1_i386.deb && dpkg -i libmpfr4_3.1.4-1_i386.deb && rm -f libmpfr4_3.1.4-1_i386.deb
 RUN wget -q https://apt.llvm.org/llvm-snapshot.gpg.key && apt-key add llvm-snapshot.gpg.key && rm -f llvm-snapshot.gpg.key
 RUN printf "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main\ndeb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main\ndeb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main" > /etc/apt/sources.list.d/llvm.list
-RUN apt-get -qq update && apt-get -y --no-install-recommends clang-7 clang-8 clang-9
+RUN apt-get -qq update && apt-get -y --no-install-recommends install clang-7 clang-8 clang-9
 RUN apt-get autoremove --purge && apt-get autoclean
 RUN locale-gen --lang en_US.UTF-8
 RUN pip3 install meson==0.46.1 awscli
