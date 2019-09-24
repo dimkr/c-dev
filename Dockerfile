@@ -1,8 +1,6 @@
 FROM debian:buster-slim
 
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV ENV DEBIAN_FRONTEND noninteractive
+ENV LC_ALL C
+ENV LANG C
 
-RUN apt-get -qq update && apt-get -y upgrade && apt-get -y --no-install-recommends install gcc libc6-dev ninja-build python3-pip python3-setuptools python3-wheel xz-utils git ccache git-lfs byacc flex; git-lfs install
-RUN pip3 install meson
+RUN apt-get -qq update && apt-get -y upgrade && apt-get -y --no-install-recommends install gcc libc6-dev ninja-build python3-minimal python3-pip python3-setuptools python3-wheel xz-utils git ccache git-lfs byacc flex; pip3 install meson && git-lfs install && apt-get autoremove --purge -y python3-pip python3-setuptools python3-wheel
